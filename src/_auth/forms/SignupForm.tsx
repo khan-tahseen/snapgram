@@ -5,7 +5,6 @@ import { Button } from '@/components/ui/button';
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -14,9 +13,11 @@ import {
 import { Input } from '@/components/ui/input';
 import { SignupValidation } from '@/lib/validation';
 import Loader from '@/components/shared/Loader';
+import { Link } from 'react-router-dom';
 
 const SignupForm = () => {
-  const isLoading = true;
+  const isLoading = false;
+
   const form = useForm<z.infer<typeof SignupValidation>>({
     resolver: zodResolver(SignupValidation),
     defaultValues: {
@@ -41,7 +42,7 @@ const SignupForm = () => {
           Create a new account
         </h2>
         <p className="text-light-3 small-medium md:base-regular mt-2">
-          To use snapgram enter your details
+          To use snapgram, please enter your details
         </p>
 
         <form
@@ -110,6 +111,10 @@ const SignupForm = () => {
               'Sign up'
             )}
           </Button>
+
+          <p className='text-small-regular text-light-2 text-center mt-2'>
+            Already have an account? <Link className='text-primary-500 text-small-semibold ml-2' to="/sign-in">Sign in</Link>
+          </p>
         </form>
       </div>
     </Form>
